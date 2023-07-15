@@ -1,0 +1,7 @@
+<option>-------</option>
+{% for personal in personals %}
+<option value="{{ personal.pk }}">{{ personal.name }}</option>
+{% endfor %}
+{% for equipo in equipos %}
+<option value="{{ equipo.pk }}">{{ equipo.name }}</option>
+{% endfor %}

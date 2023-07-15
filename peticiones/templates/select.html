@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% block content%}
+<body>
+    <div class="container" style="margin: auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;">
+    
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="../../static/img/soli.png" class="card-img-top" alt="..." width="200" height="200">
+            <div class="card-body">
+              <h5 class="card-title">Solicitud de Mantenimiento</h5>
+              <p class="card-text">Realiza Una Peticion de Mantenimiento Si Tienes Problemas con tu Equipo.</p>
+              <div class="text-center">
+                <a href="{%url 'add'%}" class="btn btn-primary">Realizar Solicitud</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <img src="../../static/img/correo.png" class="card-img-top" alt="..." width="200" height="200">
+            <div class="card-body">
+              <h5 class="card-title">Solicitud de Correo</h5>
+              <p class="card-text">Realiza Una Peticion de Correo si deseas Restablecerlo o la Creacion si eres de nuevo ingreso.</p>
+              <div class="text-center">
+                <a href="{%url 'correo'%}" class="btn btn-primary">Realizar Solicitud</a>
+            </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endblock%}
+</body>
+
+</html>
+

@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+
+{%block content%} 
+
+
+<body>
+    <div class="page-header">
+        <div class="page-title">
+            <h3>Eliminar Pendiente</h3>
+        </div>
+    </div>
+    
+        <form method="POST">
+        {% csrf_token %}
+        <!-- Alerta -->
+        <div class="callout callout-danger fade in">
+        <h5>Eliminando Comentario</h5>
+        <p>¿Estas seguro de que deseas <strong>Eliminar</strong> el
+        comentario seleccionado?.</p>
+        </div>
+        <!-- /Alerta -->
+        <button type="submit" class="btn btn-danger">Si</button>
+        <a href="{%url 'peticiones'%}" class="btn btn-primary">Cancelar</a>
+        </form>
+        
+</body>
+
+
+{%endblock%}

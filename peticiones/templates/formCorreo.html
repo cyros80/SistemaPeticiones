@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%load crispy_forms_tags%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{%block content%}
+<body>
+    <form action="" method="POST" enctype="multipart/form-data" role="form">
+        {%csrf_token%}
+        {%if 'ok' in request.GET%}
+        <div class="alert alert-success mt-5" role="alert">
+            <strong>Peticion Registrada Exitosamente</strong>
+        </div>
+
+        {%endif%}
+        {%if 'error' in request.GET%}
+
+         <div class="alert alert-danger mt-5" role="alert">
+            <strong>Error al registrar, Cominicate con el encargado</strong>
+        </div>
+        {%endif%}
+        {{form|crispy}}
+        <div class="text-end" >
+            <input type="submit" value="Enviar" class="btn" style="background-color: #1b396a; color: white;" >
+        </div>
+        </div>
+    </form>
+</body>
+{%endblock%}
+</html>

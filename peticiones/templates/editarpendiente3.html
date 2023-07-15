@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+
+{%load crispy_forms_tags%}
+
+
+{%block content%} 
+<h3 class="text-center">Pendiente</h3>
+
+
+<body>
+  <div class="container">
+    <form class="form-horizontal" action="/editarPendiente2/" method="post" role="form">
+      {%csrf_token%}
+     <input type="hidden" name="id" value="{{pendientes.id}}">
+     <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>Area:</p>
+      </blockquote>
+    </figure>
+
+    <div class="mb-3">
+      <label for="disabledTextInput" class="form-label">Area:</label>
+      <input type="text" id="disabledTextInput" value="{{pendientes.area}}" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="mb-3">
+      <label for="disabledTextInput" class="form-label">Solicitante</label>
+      <input type="text" id="disabledTextInput" value="{{pendientes.personal}}" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="mb-3">
+      <label for="disabledTextInput" class="form-label">Equipo:</label>
+      <input type="text" id="disabledTextInput" value="{{pendientes.equipo}}" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="mb-3">
+      <label for="disabledTextInput" class="form-label">Problema</label>
+      <input type="text" id="disabledTextInput" value="{{pendientes.problema}}" class="form-control" placeholder="Disabled input">
+    </div>
+
+    <div class="mb-3">
+      <label for="disabledTextInput" class="form-label">Estado</label>
+      <select name="Estado" class="form-select">
+        <option selected>{{pendientes.estado}}</option>
+        <option value="En Proceso">En Proceso</option>
+        <option value="Finalizada">Finalizada</option>
+      </select>
+    </div>
+
+
+
+  
+<br>
+
+
+        <br>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-danger btn-block text-white">Atras</button>
+          <a class="btn-danger btn-clock text-white" href="{%url 'peticiones'%}" ></a>
+        </div>
+  </form>
+  </div>
+</body>
+
+
+{%endblock%}

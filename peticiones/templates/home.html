@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+
+{%load crispy_forms_tags%}
+
+
+{%block content%} 
+
+
+
+<body>
+    <div class="container"> <p><h1>Solicitud de Mantenimiento </h1></p> 
+        <div class="card">
+            
+            <div class="card-body">
+                <form method="post" id="SolicitudForm" data-personals-url="{% url 'ajax_load_personals' %}" class="form-horizontal" role="form">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    
+                    
+                    <div class="text-end" >
+                        <input type="submit" value="Enviar" class="btn" style="background-color: #1b396a; color: white;" >
+                    </div>
+                    
+                </form>
+            </div>
+          </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#id_area").change(function () {
+            const url = $("#SolicitudForm").attr("data-personals-url");  // get the url of the `load_cities` view
+            const areaId = $(this).val();  // get the selected country ID from the HTML input
+     
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /members/ajax/load-cities/ )
+                data: {
+                    'area_id': areaId       // GET parameters
+                },
+                success: function (data) {   
+                    $("#id_personal").html(data); 
+                }
+            });
+     
+        });
+        $("#id_equipo").change(function () {
+            const url = $("#SolicitudForm").attr("data-personals-url");  // get the url of the `load_cities` view
+            const equipoId = $(this).val();  // get the selected country ID from the HTML input
+     
+            $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= /members/ajax/load-cities/ )
+                data: {
+                    'equipo_id': equipoId       // GET parameters
+                },
+                success: function (data) {   
+                    $("#id_problema").html(data); 
+                }
+            });
+     
+        });
+        
+    
+    </script>    
+</body>
+
+
+{%endblock%}

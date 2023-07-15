@@ -1,0 +1,148 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  {%block content%} 
+    <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-5" id="pendientes-tab" data-bs-target="#pendientes" data-bs-toggle="tab" type="button" role="tab" aria-controls="pendientes" aria-selected="true">Pendientes</button>
+      </li>  
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-5" id="proceso-tab" data-bs-target="#proceso" data-bs-toggle="tab" type="button" role="tab" aria-controls="proceso" aria-selected="false">En Proceso</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-5" id="finalizada-tab" data-bs-target="#finalizada" data-bs-toggle="tab" type="button" role="tab" aria-controls="finalizada" aria-selected="false">Finalizadas</button>
+      </li>  
+      </ul>
+      <div class="tab-content" id="myTabcontrol">
+          <div class="tab-pane fade show" role="tabpanel" id="pendientes" aria-selected="true" aria-labelledby="pendientes-tab">
+            <br>
+            <h3>Pendientes</h3>
+            <br>
+            <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+              <thead>
+                <tr>
+                  <th scope="col">Folio</th>
+                  <th scope="col">Area</th>
+                  <th scope="col">Solicitantante</th>
+                  <th scope="col">Equipo</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Fecha Sol.</th>
+                </tr>
+              </thead>
+              {%for peticionesp in peticionesp %}
+              <tbody>
+                <tr>
+                  <th scope="col">{{peticionesp.id}}</th>
+                  <td scope="col">{{peticionesp.area}}</td>
+                  <td scope="col">{{peticionesp.personal}}</td>
+                  <td scope="col">{{peticionesp.equipo}}</td>
+                  <td scope="col">{{peticionesp.problema}}</td>
+                  <td scope="col">{{peticionesp.estado}}</td>
+                  <td scope="col">{{peticionesp.fsolicitud}}</td>
+                  <td class="text-center">
+                    <a class="btn btn-warning" class="btn btn-warning" href="{%url 'editar3' peticionesp.id%}">Editar</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="btn btn-danger" href="{%url 'eliminar' peticionesp.id%}">Eliminar</a>
+                  </td>
+                </tr>
+                
+              </tbody>
+              {%endfor%}
+            </table>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="proceso" aria-labelledby="proceso-tab">
+            <br>
+            <h3>En Proceso</h3>
+            <br>
+            <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+              <thead>
+                <tr>
+                  <th scope="col">Folio</th>
+                  <th scope="col">Area</th>
+                  <th scope="col">Solicitantante</th>
+                  <th scope="col">Equipo</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Fecha Sol.</th>
+                </tr>
+              </thead>
+              {%for peticionese in peticionese %}
+              <tbody>
+                <tr>
+                  <th scope="col">{{peticionese.id}}</th>
+                  <td scope="col">{{peticionese.area}}</td>
+                  <td scope="col">{{peticionese.personal}}</td>
+                  <td scope="col">{{peticionese.equipo}}</td>
+                  <td scope="col">{{peticionese.problema}}</td>
+                  <td scope="col">{{peticionese.estado}}</td>
+                  <td scope="col">{{peticionese.fsolicitud}}</td>
+                  <td class="text-center">
+                    <a class="btn btn-warning" class="btn btn-warning" href="{%url 'editar3' peticionese.id%}">Editar</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="btn btn-danger" href="{%url 'eliminar' peticionese.id%}">Eliminar</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="btn btn-danger" href="{%url 'create-pdf-id' peticionese.id%}">PDF</a>
+                  </td>
+                </tr>
+                
+              </tbody>
+              {%endfor%}
+            </table>
+          </div>
+          <div class="tab-pane fade show" role="tabpanel" id="finalizada" aria-labelledby="finalizada-tab">
+            <br>
+            <h3>Finalizadas</h3>
+            <br>
+            <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+              <thead>
+                <tr>
+                  <th scope="col">Folio</th>
+                  <th scope="col">Area</th>
+                  <th scope="col">Solicitantante</th>
+                  <th scope="col">Equipo</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Fecha Sol.</th>
+                </tr>
+              </thead>
+              {%for peticionesf in peticionesf %}
+              <tbody>
+                <tr>
+                  <th scope="col">{{peticionesf.id}}</th>
+                  <td scope="col">{{peticionesf.area}}</td>
+                  <td scope="col">{{peticionesf.personal}}</td>
+                  <td scope="col">{{peticionesf.equipo}}</td>
+                  <td scope="col">{{peticionesf.problema}}</td>
+                  <td scope="col">{{peticionesf.estado}}</td>
+                  <td scope="col">{{peticionesf.fsolicitud}}</td>
+                  <td class="text-center">
+                    <a class="btn btn-warning" class="btn btn-warning" href="{%url 'editar3' peticionesf.id%}">Editar</a>
+                  </td>
+                  <td class="text-center">
+                    <a class="btn btn-danger" href="{%url 'eliminar' peticionesf.id%}">Eliminar</a>
+                  </td>
+                </tr>
+                
+              </tbody>
+              {%endfor%}
+            </table>
+          </div>
+      </div>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      {%endblock%}
+</body>
+</html>
